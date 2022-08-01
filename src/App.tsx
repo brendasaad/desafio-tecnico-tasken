@@ -1,3 +1,5 @@
+import { useCallback, useEffect, useState } from "react";
+
 import { ApolloClient, InMemoryCache, gql, useQuery } from "@apollo/client";
 import {
   Text,
@@ -10,11 +12,11 @@ import {
   Th,
   Thead,
   Tr,
+  Heading,
 } from "@chakra-ui/react";
-import { useCallback, useEffect, useState } from "react";
 import { BallTriangle } from "react-loader-spinner";
 
-// Inicializa um cliente GraphQL
+// Inicializa um cliente GraphQL + Apollo
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   uri: "https://countries.trevorblades.com",
@@ -37,6 +39,7 @@ const LIST_COUNTRIES = gql`
   }
 `;
 
+//tipagem para o novo array que foi gerado para usar a funcao sort()
 interface ICountries {
   code: string;
   name: string;
@@ -89,13 +92,16 @@ function CountryList() {
       </>
     );
   }
-
   return (
     <Box p={10} borderTopRadius="6px" border="1px solid #e2e8f0">
-      <TableContainer borderTopRadius="6px" border="1px solid #e2e8f0">
+      <Heading textAlign="center" paddingBottom={10}>
+        Desafio Técnico / TASKEN
+      </Heading>
+      <TableContainer p={8} borderTopRadius="6px" border="1px solid #e2e8f0">
         <Table border="1px solid #e2e8f0" borderTopRadius="6px">
           <TableCaption>
-            Desafio Técnico Tasken - Estágio em Front-End / ReactJS
+            Desafio Técnico Tasken - Estágio em Front-End / ReactJS / Brenda
+            Queiroz Saad
           </TableCaption>
           <Thead background="#c5c5c5">
             <Tr>
